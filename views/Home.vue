@@ -6,7 +6,7 @@
             <el-main>Main</el-main>
         </el-container>
     </el-container>
-</template>
+</template> 
 
 <script>
 export default {
