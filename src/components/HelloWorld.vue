@@ -1,11 +1,6 @@
 <template>
   <div class="hello">
-    <router-link to="/">
-      <el-button>Home</el-button>
-    </router-link>
-    <router-link to="/User">    
-      <el-button type="primary">User</el-button>
-    </router-link>
+    
   </div>
 </template>
 
