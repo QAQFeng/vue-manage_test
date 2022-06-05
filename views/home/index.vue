@@ -63,49 +63,16 @@
 </template>
 
 <script>
+import { getData } from '../../api/data.js'
+
+
 export default {
     name: 'home',
     data() {
         return {
             userImg: require('../../src/assets/images/user.png'),
-            tableData: [
-                 {
-                    name: 'oppo',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                },
-                {
-                    name: 'vivo',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                },
-                {
-                    name: '苹果',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                },
-                {
-                    name: '小米',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                },
-                {
-                    name: '三星',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                },
-                {
-                    name: '魅族',
-                    todayBuy: 100,
-                    monthBuy: 300,
-                    totalBuy: 800
-                }
-            ],
+            // 表单数据
+            tableData: [],
             tableLabel: {
                 name: '课程',
                 todayBuy: '今日购买',
@@ -150,9 +117,21 @@ export default {
                 color: "#5ab1ef",
                 },
             ]
-
-
         }
+    },
+    mounted() {
+        getData().then(res => {
+            const { code, data } = res.data
+            if (code === 20000) {
+                this.tableData = data.tableData
+            }
+            console.log(res)
+        })
+        // getData().then(res => {
+        //     console.log(res)
+        // }).catch(err=> {
+        //     console.log(err)
+        // }) 
     }
 
 }

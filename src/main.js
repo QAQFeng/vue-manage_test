@@ -24,13 +24,15 @@ import {
 import 'element-ui/lib/theme-chalk/index.css';
 // 导入配置文件（CSS）
 import '../src/assets/less/index.less'
-
+// 导入 axios
+import http from 'axios'
 
 // 导入路由器（router）文件夹
 import router from '../router'
 // 导入 store 文件夹（vuex 仓库）
 import store from '../store'
 
+import '../api/mock.js'
 
 Vue.config.productionTip = false
 Vue.use(Button)
@@ -50,6 +52,10 @@ Vue.use(Col)
 Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
+
+// axios 不是插件，绑定在 prototype上
+Vue.prototype.$http = http
+
 
 
 new Vue({
