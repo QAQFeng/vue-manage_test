@@ -1,13 +1,14 @@
 <template>
-    <el-container height="100%">
+    <el-container style="height: 100%">
         <el-aside width="auto">
+            <!-- 侧边栏 -->
             <common-aside></common-aside>
         </el-aside>
         <el-container>
             <el-header>
                 <common-header></common-header>
             </el-header>
-            <common-tag></common-tag>
+            <common-tag />
             <el-main>
                 <router-view></router-view>
             </el-main>

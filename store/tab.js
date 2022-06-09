@@ -1,4 +1,4 @@
-
+// vuex 公共组件
 export default {
     state: {
         isCollapse: false,
@@ -18,6 +18,7 @@ export default {
         collapseMenu(state) {
             state.isCollapse = !state.isCollapse
         },
+        // 面包屑的显示
         selectMenu(state, val) {
             if (val.name !== 'home') {
                 state.currentMenu = val
@@ -29,6 +30,11 @@ export default {
             } else {
                 state.currentMenu = null
             }
+        },
+        // tag 点击与删除
+        closeTag(state, val) {
+            const result = state.tabsList.findIndex(item => item.name === val.name)
+            state.tabsList.splice(result, 1)
         }
     }
 }

@@ -10,11 +10,20 @@ export const getMenu = (param) => {
     })
 }
 
-// 首页左侧表单数据接口
+// 首页左侧菜单栏数据接口
 export const getData = () => {
     return axios.request({
         url: '/home/getData',
         method: 'get'
+    })
+}
+
+// 用户界面 table 数据接口
+export const getUser = (params) => {
+    return axios.request({
+        url: '/user/getUser',
+        method: 'get',
+        params
     })
 }
 

@@ -20,7 +20,18 @@ import {
   TableColumn,
   Breadcrumb,
   BreadcrumbItem,
-  Tag
+  Tag,
+  Form,
+  FormItem,
+  Input,
+  Select,
+  Option,
+  DatePicker,
+  Switch,
+  Dialog,
+  Pagination,
+  MessageBox,
+  Message
 } from 'element-ui';
 
 
@@ -34,7 +45,7 @@ import http from 'axios'
 import router from '../router'
 // 导入 store 文件夹（vuex 仓库）
 import store from '../store'
-
+// 导入 mock 拦截器组件
 import '../api/mock.js'
 
 Vue.config.productionTip = false
@@ -58,11 +69,22 @@ Vue.use(TableColumn)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Tag)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(DatePicker)
+Vue.use(Switch)
+Vue.use(Dialog)
+Vue.use(Pagination)
 
 // axios 不是插件，绑定在 prototype上
 Vue.prototype.$http = http
-
-
+// 在 ../views/User 中使用了 MessageBox(弹窗)，需要引入 MessageBox ,错误提示: this.$confirm is not a funtion
+Vue.prototype.$confirm = MessageBox.confirm 
+// 在 ../views/User 中使用了 Message(消息提示)，需要引入 Message ,错误提示: this2.$message is not a funtion
+Vue.prototype.$message = Message
 
 new Vue({
   router,

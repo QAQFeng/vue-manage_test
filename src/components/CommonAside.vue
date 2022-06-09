@@ -15,7 +15,7 @@
                 <span slot="title">{{ item.label }}</span>
             </template>
             <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-                <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">{{ subItem.label }}</el-menu-item>
+                <el-menu-item @click="(subItem)" :index="subItem.path">{{ subItem.label }}</el-menu-item>
             </el-menu-item-group>
         </el-submenu>
     </el-menu>
@@ -105,7 +105,7 @@
 <style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;  
-    min-height: 1000px;
+    min-height: 400px;
 }
 
 .el-menu {
