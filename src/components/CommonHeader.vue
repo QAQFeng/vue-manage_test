@@ -2,10 +2,10 @@
   <header>
     <div class="l-content">
       <el-button @click="handleMenu" plain icon="el-icon-menu" size="mini"></el-button>
-      <h3 style="{ color: #fff; }">首页</h3>
-      <!-- <el-breadcrumb>
-          <el-breadcrumb-item>首页</el-breadcrumb-item>
-      </el-breadcrumb> -->
+      <!-- <h3 style="{ color: #fff; }">首页</h3> -->
+      <el-breadcrumb separator="/">
+          <el-breadcrumb-item class="myColor" v-for="item in tags" :key="item.path" :to="{ path: item.path }">{{ item.label }}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-content">
         <el-dropdown trigger="click" size="mini">
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
     name: 'CommonHeader',
     data() {
@@ -34,6 +36,12 @@ export default {
         handleMenu() {
             this.$store.commit('collapseMenu')
         }
+    },
+    computed: {
+        // tab.tabsList 中的数据用别名 tags 代替，表示面包屑中的数据
+        ...mapState({
+            tags: state => state.tab.tabsList
+        })
     }
 
 }
@@ -53,6 +61,9 @@ header {
             // width: 50px;
             // height: 30px;
             margin-right: 20px;
+        }
+        .myColor  /deep/ .el-breadcrumb__inner{
+            color: rgb(177, 177, 177);
         }
     }
     .r-content {

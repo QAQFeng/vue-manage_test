@@ -17,7 +17,10 @@ import {
   Col,
   Card,
   Table,
-  TableColumn
+  TableColumn,
+  Breadcrumb,
+  BreadcrumbItem,
+  Tag
 } from 'element-ui';
 
 
@@ -52,6 +55,9 @@ Vue.use(Col)
 Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Tag)
 
 // axios 不是插件，绑定在 prototype上
 Vue.prototype.$http = http

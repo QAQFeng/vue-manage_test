@@ -76,11 +76,15 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
-      },
-      clickMenu(item) {
+        },
+      // item 为 data.menu[] 里的一个路由（元素）
+        clickMenu(item) {
+        // 点击侧边栏跳转到相应路由
         this.$router.push({
             name: item.name
-        })
+        }),
+        // 点击侧边栏修改标签
+        this.$store.commit('selectMenu', item)
       }
     },
     computed: {
@@ -101,7 +105,7 @@
 <style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;  
-    min-height: 400px;
+    min-height: 1000px;
 }
 
 .el-menu {

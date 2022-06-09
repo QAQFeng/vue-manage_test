@@ -10,6 +10,7 @@ export const getMenu = (param) => {
     })
 }
 
+// 首页左侧表单数据接口
 export const getData = () => {
     return axios.request({
         url: '/home/getData',
