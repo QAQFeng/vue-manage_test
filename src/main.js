@@ -86,8 +86,28 @@ Vue.prototype.$confirm = MessageBox.confirm
 // 在 ../views/User 中使用了 Message(消息提示)，需要引入 Message ,错误提示: this2.$message is not a funtion
 Vue.prototype.$message = Message
 
+// // 导航守卫-路由监听
+// router.beforeEach((to, from, next) => {
+//   // 避免刷新后丢失 token
+//   store.commit('getToken')
+//   const token = store.state.user.token
+//   // 如果当前 token 不存在并且当前页面不是 login 页面，不能进入管理系统
+//   if (!token && to.name !== 'login') {
+//     next({ name: 'login' })
+//   } else if (token && to.name === 'login') {
+//     next({ name: 'home' })
+//   } else {
+//     next()
+//   }
+// })
+
+
+
 new Vue({
   router,
   store,
   render: h => h(App),
+  created() {
+    store.commit('addMenu', router)
+  }
 }).$mount('#app')

@@ -53,7 +53,7 @@ export default {
     name: 'login',
     data () {
         return {
-            // 用户信息
+            // 用户信息(账号和密码)
             form: {
 
             },
@@ -78,9 +78,13 @@ export default {
         }
     },
     methods: {
+        // 调用 Api 接口
+        // code 在 res.data 下，所以 then 后面要使用 ES6 的语法解构 data
         login() {
             getMenu(this.form).then(({ data: res }) => {
-                if(res.code === 20000) {
+                console.log(res, 'res')
+                if (res.code === 20000) {
+                    // 登录成功后清除当前路由；将 menu 数据存储到 cookie 里；设置 token；动态添加路由；页面跳转
                     this.$store.commit('clearMenu')
                     this.$store.commit('setMenu', res.data.menu)
                     this.$store.commit('setToken', res.data.token)
@@ -90,6 +94,8 @@ export default {
                     this.$message.warning(res.data.message)
                 }
             })
+
+            // // 使用 mock 模拟生成 token，调用 store 里的 setToken() 方法创建 token，然后跳转到 首页 
             // const token = Mock.random.guid()
             // this.$store.commit('setToken', token)
             // this.$router.push({ name: 'home' })
