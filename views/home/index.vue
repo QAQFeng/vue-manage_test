@@ -56,11 +56,11 @@
                     <echart :chartData="echartData.order" style="height: 280px"/>
                 </el-card>
                 <div class="graph">
-                    <el-card style="height: 260px">
+                    <el-card style="height: 265px">
                         <!-- <div style="height: 240px" ref="userEcharts"></div> -->
                         <echart :chartData="echartData.user" style="height: 240px"/>
                     </el-card>
-                    <el-card style="height: 260px">
+                    <el-card style="height: 265px">
                         <!-- <div style="height: 240px" ref="videoEcharts"></div> -->
                         <echart :chartData="echartData.video" style="height: 240px" :isAxisChart="false" />
                     </el-card>
@@ -275,7 +275,7 @@ export default {
                         }
                     ]
             }
-            console.log(res)
+            console.log(res, 'home-res')
         })
     }
 }

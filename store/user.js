@@ -10,6 +10,9 @@ export default {
         setToken(state, val) {
             state.token = val,
             Cookie.set('token', val)
+            
+                console.log(state.token, 'state.token')
+            
         },
         // 清空系统登录凭证 token
         clearToken(state) {

@@ -8,7 +8,8 @@ export default {
         // 初始化标签，默认显示 “首页”
         tabsList: [
             {
-                path: '/home',
+                // path: '/home',
+                path: '/',
                 name: 'home',
                 label: '首页',
                 icon: 'home'
@@ -44,11 +45,15 @@ export default {
             state.menu = val
             // 避免在刷新后丢失 menu 数据，将其存储到 cookie 里
             Cookie.set('menu', JSON.stringify(val))
+
+                console.log(state.menu, 'setMenu-state.menu')
         },
         // 初始化 menu 为空数组，并清空 cookie
         clearMenu(state) {
             state.menu = []
             Cookie.remove('menu')
+
+                console.log(state.menu, 'clearMenu-state.menu')
         },
         addMenu(state, router) {
             if (!Cookie.get('menu')) {
@@ -67,17 +72,23 @@ export default {
                         item.component = () => import(`../views/${item.url}`)
                         return item
                     })
-                    menuArray.push(...item.children)
                 } else {
                     item.component = () => import(`../views/${item.url}`)
                     menuArray.push(item)
                 }
             });  
+
             // 路由的动态添加
             menuArray.forEach(item => {
+
                 // console.log(router)
+                // console.log('router')
+                
+                
                 router.addRoute('Main', item)
+                // console.log(router.options.routes[0].children)
             })
         }
     }
 }
+

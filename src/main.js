@@ -91,17 +91,38 @@ Vue.prototype.$message = Message
 //   // 避免刷新后丢失 token
 //   store.commit('getToken')
 //   const token = store.state.user.token
+
+//   console.log(token, 'main-token')
+//   console.log(to.name, 'main-to.name')
+
 //   // 如果当前 token 不存在并且当前页面不是 login 页面，不能进入管理系统
 //   if (!token && to.name !== 'login') {
 //     next({ name: 'login' })
-//   } else if (token && to.name === 'login') {
+//   }
+//   else if (token && to.name === 'login') {
 //     next({ name: 'home' })
-//   } else {
+//     // next()
+//   }
+//   else {
 //     next()
 //   }
 // })
 
+router.beforeEach((to, from, next) => {
+  // store.commit('clearToken')
+  store.commit('getToken')
+  const token = store.state.user.token 
 
+  // 如果当前 token 不存在并且当前页面不是 login 页面，不能进入管理系统
+  if (!token && to.name !== 'login') {
+    // next('login')
+    next('login')
+  } else if (token && to.name === 'login') {
+    next('home')
+  } else {
+    next()
+  }
+})
 
 new Vue({
   router,
